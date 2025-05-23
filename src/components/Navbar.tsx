@@ -26,10 +26,6 @@ const Navbar: React.FC = () => {
           </a>
           
           <div className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Features</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">About</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Blog</a>
             <a 
               href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
               target="_blank"
