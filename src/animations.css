@@ -1,0 +1,64 @@
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+/* Scroll reveal animations */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.reveal-from-bottom {
+  transform: translateY(50px);
+}
+
+.reveal-from-bottom.active {
+  transform: translateY(0);
+}
+
+.reveal-from-left {
+  transform: translateX(-50px);
+}
+
+.reveal-from-left.active {
+  transform: translateX(0);
+}
+
+.reveal-from-right {
+  transform: translateX(50px);
+}
+
+.reveal-from-right.active {
+  transform: translateX(0);
+}
