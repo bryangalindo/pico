@@ -37,6 +37,14 @@ function Demo() {
   return null;
 }
 
+function Waitlist() {
+  React.useEffect(() => {
+    window.location.href = 'https://forms.gle/giZWwVWfJStoW7gVA';
+  }, []);
+  
+  return null;
+}
+
 function App() {
   return (
     <Router>
@@ -46,6 +54,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/repo" element={<Repo />} />
           <Route path="/demo" element={<Demo />} />
+          <Route path="/waitlist" element={<Waitlist />} />
         </Routes>
         <Footer />
       </div>
