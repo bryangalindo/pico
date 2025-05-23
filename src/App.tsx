@@ -29,6 +29,14 @@ function Repo() {
   return null;
 }
 
+function Demo() {
+  React.useEffect(() => {
+    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  }, []);
+  
+  return null;
+}
+
 function App() {
   return (
     <Router>
@@ -37,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/repo" element={<Repo />} />
+          <Route path="/demo" element={<Demo />} />
         </Routes>
         <Footer />
       </div>
