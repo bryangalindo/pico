@@ -25,12 +25,15 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-fade-in-up">
-          <button 
+          <a 
+            href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 group"
           >
             Join waitlist
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          </a>
           <a 
             href="#demo" 
             className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-medium transition-all duration-300 backdrop-blur-sm"

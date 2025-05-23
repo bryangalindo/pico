@@ -10,12 +10,15 @@ const CallToAction: React.FC = () => {
           Join our waitlist today and be among the first to experience the future of strategic job hunting with PicoAI.
         </p>
         
-        <button 
+        <a 
+          href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
+          target="_blank"
+          rel="noopener noreferrer"
           className="px-8 py-4 bg-black hover:bg-gray-900 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 mx-auto group"
         >
           Join waitlist
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </button>
+        </a>
       </div>
     </section>
   );

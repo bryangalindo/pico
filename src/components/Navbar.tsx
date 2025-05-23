@@ -30,9 +30,14 @@ const Navbar: React.FC = () => {
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
             <a href="#" className="text-gray-300 hover:text-white transition-colors">About</a>
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Blog</a>
-            <button className="ml-4 px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300">
+            <a 
+              href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-4 px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300"
+            >
               Join waitlist
-            </button>
+            </a>
           </div>
           
           <button 
@@ -76,12 +81,15 @@ const Navbar: React.FC = () => {
             >
               Blog
             </a>
-            <button 
-              className="w-full mt-4 px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300"
+            <a 
+              href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full mt-4 px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300 block text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Join waitlist
-            </button>
+            </a>
           </div>
         </div>
       )}
