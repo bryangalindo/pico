@@ -20,7 +20,7 @@ const HeroSection: React.FC = () => {
             your multi-agent job hunt <span className="text-blue-500">research team.</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
-            We leverage AI to analyze thousands of job listings, identify patterns, and give you the edge in your next career move.
+          PicoAI uses AI agents to conduct pre-interview research to help you prepare more effectively for your upcoming interview.
           </p>
         </div>
 
