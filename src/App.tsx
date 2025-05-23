@@ -13,11 +13,11 @@ function App() {
     <div className="font-sans">
       <Navbar />
       <HeroSection />
-      <OldWaySection />
+      {/* <OldWaySection />
       <NewWaySection />
       <TestimonialsSection />
       <CallToAction />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
