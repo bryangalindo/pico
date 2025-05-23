@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import OldWaySection from './components/OldWaySection';
@@ -8,17 +9,38 @@ import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import './animations.css';
 
-function App() {
+function Home() {
   return (
-    <div className="font-sans">
-      <Navbar />
+    <>
       <HeroSection />
       {/* <OldWaySection />
       <NewWaySection />
       <TestimonialsSection />
-      <CallToAction />
-      <Footer /> */}
-    </div>
+      <CallToAction /> */}
+    </>
+  );
+}
+
+function Repo() {
+  React.useEffect(() => {
+    window.location.href = 'https://github.com/bryangalindo/pico';
+  }, []);
+  
+  return null;
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="font-sans">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/repo" element={<Repo />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
