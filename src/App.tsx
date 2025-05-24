@@ -64,7 +64,7 @@ function Waitlist() {
 
 function AppContent() {
   const location = useLocation();
-  const showNavbar = !['/upload', '/generate', '/export'].includes(location.pathname);
+  const showNavbar = !['/upload', '/generate', '/export', '/docs'].includes(location.pathname);
 
   return (
     <div className="font-sans">
