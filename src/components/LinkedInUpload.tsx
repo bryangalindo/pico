@@ -68,8 +68,8 @@ const LinkedInUpload: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="w-full max-w-2xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="w-full max-w-2xl px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Upload Your LinkedIn Data</h2>
           <p className="text-gray-600">Generate personalized referral requests from your LinkedIn connections</p>
