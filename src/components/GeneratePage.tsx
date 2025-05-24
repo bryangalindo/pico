@@ -3,10 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { GenerationProgress, GenerationStep } from './LinkedInUpload';
 
 const GENERATION_STEPS: GenerationStep[] = [
-  { id: 'education', label: 'Getting your education...', status: 'pending' },
-  { id: 'companies', label: 'Getting your companies...', status: 'pending' },
-  { id: 'roles', label: 'Getting your desired roles...', status: 'pending' },
-  { id: 'connections', label: 'Finding connections with common ground...', status: 'pending' },
+  { id: 'education', label: 'Getting your profile...', status: 'pending' },
+  { id: 'companies', label: 'Getting profiles from your connections...', status: 'pending' },
+  { id: 'connections', label: 'Finding connections with shared experiences...', status: 'pending' },
   { id: 'jobs', label: 'Finding active jobs from your connections...', status: 'pending' },
   { id: 'messages', label: 'Generating personalized messages...', status: 'pending' },
   { id: 'csv', label: 'Generating CSV...', status: 'pending' },
@@ -97,18 +96,18 @@ const GeneratePage: React.FC = () => {
 
         <div className="bg-white rounded-xl shadow-lg p-8">
           <GenerationProgress steps={steps} />
-
-          {!isGenerating && (
-            <div className="mt-8 text-center">
-              <button
-                onClick={handleDownload}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
-              >
-                Download Referral Requests File
-              </button>
-            </div>
-          )}
         </div>
+
+        {!isGenerating && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={handleDownload}
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+            >
+              Download Referral Requests File
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
