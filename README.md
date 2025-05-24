@@ -1,4 +1,4 @@
-# 🍅 PicoAI: Unlock job referrals from your entire network.
+# 🍅 PicoAI: Unlock Job Referrals From Your Entire Network.
 
 I have 26 hours to build PicoAI as part of the #AgentHacks2025 Hackathon.
 
