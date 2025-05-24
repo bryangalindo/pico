@@ -7,7 +7,6 @@ import NewWaySection from './components/NewWaySection';
 import TestimonialsSection from './components/TestimonialsSection';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
-import LimitedTimeBanner from './components/LimitedTimeBanner';
 import './animations.css';
 
 function Home() {
@@ -50,7 +49,6 @@ function App() {
   return (
     <Router>
       <div className="font-sans">
-        <LimitedTimeBanner />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
