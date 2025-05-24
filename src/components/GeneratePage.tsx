@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { GenerationProgress } from './LinkedInUpload';
+import { GenerationProgress, GenerationStep } from './LinkedInUpload';
 
-const GENERATION_STEPS = [
+const GENERATION_STEPS: GenerationStep[] = [
   { id: 'education', label: 'Getting your education...', status: 'pending' },
   { id: 'companies', label: 'Getting your companies...', status: 'pending' },
   { id: 'roles', label: 'Getting your desired roles...', status: 'pending' },
@@ -38,6 +38,14 @@ const GeneratePage: React.FC = () => {
         // Simulate processing time for each step
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
+      
+      // Mark the final step as completed
+      setSteps(prevSteps => 
+        prevSteps.map((step, index) => ({
+          ...step,
+          status: index === steps.length - 1 ? 'completed' : step.status
+        }))
+      );
       
       setIsGenerating(false);
     };
