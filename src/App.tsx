@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import LinkedInUpload from './components/LinkedInUpload';
 import GeneratePage from './components/GeneratePage';
 import ExportPage from './components/ExportPage';
+import DocsPage from './components/DocsPage';
 import './animations.css';
 
 function Home() {
@@ -76,6 +77,7 @@ function AppContent() {
         <Route path="/upload" element={<LinkedInUpload />} />
         <Route path="/generate" element={<GeneratePage />} />
         <Route path="/export" element={<ExportPage />} />
+        <Route path="/docs" element={<DocsPage />} />
       </Routes>
     </div>
   );
