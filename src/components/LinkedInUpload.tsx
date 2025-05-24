@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export type GenerationStep = {
@@ -46,6 +46,21 @@ const LinkedInUpload: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'uploaded'>('idle');
+  const [countdown, setCountdown] = useState(5);
+
+  useEffect(() => {
+    let timer: number;
+    if (uploadStatus === 'uploaded' && countdown > 0) {
+      timer = window.setTimeout(() => {
+        setCountdown(countdown - 1);
+      }, 1000);
+    } else if (uploadStatus === 'uploaded' && countdown === 0) {
+      handleGenerateReferrals();
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [uploadStatus, countdown]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -197,6 +212,9 @@ const LinkedInUpload: React.FC = () => {
 
         {uploadStatus === 'uploaded' && (
           <div className="mt-6 text-center">
+            <div className="text-gray-600 mb-4">
+              Redirecting you to generate referrals in {countdown} seconds...
+            </div>
             <button
               onClick={handleGenerateReferrals}
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
