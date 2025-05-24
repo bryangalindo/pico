@@ -7,6 +7,7 @@ import NewWaySection from './components/NewWaySection';
 import TestimonialsSection from './components/TestimonialsSection';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
+import LinkedInUpload from './components/LinkedInUpload';
 import './animations.css';
 
 function Home() {
@@ -55,6 +56,7 @@ function App() {
           <Route path="/repo" element={<Repo />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/waitlist" element={<Waitlist />} />
+          <Route path="/upload" element={<LinkedInUpload />} />
         </Routes>
       </div>
     </Router>
