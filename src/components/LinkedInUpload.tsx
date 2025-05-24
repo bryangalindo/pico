@@ -1,10 +1,62 @@
 import React, { useState } from 'react';
 
+type GenerationStep = {
+  id: string;
+  label: string;
+  status: 'pending' | 'in-progress' | 'completed' | 'error';
+};
+
+const GENERATION_STEPS: GenerationStep[] = [
+  { id: 'education', label: 'Getting your education...', status: 'pending' },
+  { id: 'companies', label: 'Getting your companies...', status: 'pending' },
+  { id: 'roles', label: 'Getting your desired roles...', status: 'pending' },
+  { id: 'connections', label: 'Finding connections with common ground...', status: 'pending' },
+  { id: 'jobs', label: 'Finding active jobs from your connections...', status: 'pending' },
+  { id: 'messages', label: 'Generating personalized messages...', status: 'pending' },
+  { id: 'csv', label: 'Generating CSV...', status: 'pending' },
+];
+
+const GenerationProgress: React.FC<{ steps: GenerationStep[] }> = ({ steps }) => {
+  return (
+    <div className="mt-6 space-y-4">
+      {steps.map((step, index) => (
+        <div key={step.id} className="flex items-start">
+          <div className="flex-shrink-0">
+            {step.status === 'completed' ? (
+              <svg className="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+              </svg>
+            ) : step.status === 'in-progress' ? (
+              <svg className="animate-spin h-6 w-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            ) : (
+              <div className="h-6 w-6 rounded-full border-2 border-gray-300"></div>
+            )}
+          </div>
+          <div className="ml-3">
+            <p className={`text-sm font-medium ${
+              step.status === 'completed' ? 'text-green-600' :
+              step.status === 'in-progress' ? 'text-blue-600' :
+              'text-gray-500'
+            }`}>
+              {step.label}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const LinkedInUpload: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'uploaded'>('idle');
   const [generationStatus, setGenerationStatus] = useState<'idle' | 'generating' | 'generated'>('idle');
+  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [steps, setSteps] = useState<GenerationStep[]>(GENERATION_STEPS);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -46,12 +98,26 @@ const LinkedInUpload: React.FC = () => {
     }
   };
 
-  const handleGenerateReferrals = () => {
+  const handleGenerateReferrals = async () => {
     setGenerationStatus('generating');
-    // TODO: Implement actual referral generation logic here
-    setTimeout(() => {
-      setGenerationStatus('generated');
-    }, 2000);
+    setSteps(steps.map(step => ({ ...step, status: 'pending' })));
+    
+    // Simulate processing each step
+    for (let i = 0; i < steps.length; i++) {
+      setCurrentStep(i);
+      setSteps(prevSteps => 
+        prevSteps.map((step, index) => ({
+          ...step,
+          status: index === i ? 'in-progress' : 
+                 index < i ? 'completed' : 'pending'
+        }))
+      );
+      
+      // Simulate processing time for each step
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+    
+    setGenerationStatus('generated');
   };
 
   const getStatusColor = () => {
@@ -165,25 +231,15 @@ const LinkedInUpload: React.FC = () => {
                   : 'bg-green-600 hover:bg-green-700'} 
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200`}
             >
-              {generationStatus === 'generating' ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Generating Referral Requests...
-                </>
-              ) : generationStatus === 'generated' ? (
-                <>
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Download Referral Requests
-                </>
-              ) : (
-                'Generate Referral Requests File'
-              )}
+              {generationStatus === 'generating' ? 'Generating...' : 
+               generationStatus === 'generated' ? 'Download Referral Requests' :
+               'Generate Referral Requests File'}
             </button>
+            
+            {generationStatus === 'generating' && (
+              <GenerationProgress steps={steps} />
+            )}
+            
             {generationStatus === 'generated' && (
               <p className="mt-2 text-sm text-green-600">
                 Your referral requests are ready! Click to download the CSV file.
