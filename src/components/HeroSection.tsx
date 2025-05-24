@@ -17,10 +17,10 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-10">
         <div className="space-y-6 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tight">
-            your multi-agent job hunt <span className="text-blue-500">research team.</span>
+            your job referral outreach, <span className="text-blue-500">automated</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
-          PicoAI uses AI agents to conduct pre-interview research to help you prepare more effectively for your upcoming interview.
+          PicoAI analyzes your LinkedIn connections, finds job openings at their companies, and writes personalized referral messages — all automatically.
           </p>
         </div>
 

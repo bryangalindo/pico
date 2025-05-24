@@ -1,8 +1,8 @@
-# 🍅 PicoAI: Your Multi-Agent Job Hunt Research Team
+# 🍅 PicoAI: Your Job Referral Outreach, Automated.
 
 I have 26 hours to build PicoAI as part of the #AgentHacks2025 Hackathon.
 
-PicoAI uses AI agents to conduct pre-interview research (e.g., analyzing company financials, press releases, etc.) to help you prepare more effectively for your upcoming interview.
+PicoAI analyzes your LinkedIn connections, finds job openings at their companies, and crafts personalized referral messages — all automatically.
 
 ## Prerequisites
 
