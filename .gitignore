@@ -57,3 +57,6 @@ debug.log
 
 # System Files
 Thumbs.db
+
+# Backend
+backend/resources/*
