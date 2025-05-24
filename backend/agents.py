@@ -51,6 +51,16 @@ def writer_agent(client, referrer: User, relationship_summary: str, job: Job):
     return gemini_chat(client, prompt, system_msg="You are a job-hunting assistant helping write referral messages.")
 
 
+def editor_agent(client, draft_message):
+    prompt = f"""
+        Edit and improve the following referral request message for clarity, tone, and conciseness. Make it professional and warm, but brief. Keep all important details.
+
+        Message:
+        {draft_message}
+    """
+    return gemini_chat(client, prompt, system_msg="You are a writing editor polishing professional outreach messages.")
+
+
 if __name__ == "__main__":
     client = genai.Client(api_key=cfg.GOOGLE_GEMINI_API_KEY)
     results = gemini_chat(client, "Hello, how are you?")
@@ -107,7 +117,7 @@ if __name__ == "__main__":
         In conclusion, Jane Doe is a potentially valuable referral source for John Doe. A well-crafted referral message that acknowledges their shared work experience and education would be most effective.
     """
     # esults = writer_agent(client, referrer, relationship_summary, job)
-    raw_referral_message = """
+    draft_referral_message = """
         Subject: Referral Request - Software Engineer Role at [Company Name - if known from the Job URL, otherwise omit]
 
         Hi Jane,
@@ -126,5 +136,20 @@ if __name__ == "__main__":
 
         John Doe
     """
-    print(results)
+    # results = editor_agent(client, draft_referral_message)
+    final_referral_message = """
+        Hi Jane,
+
+        Hope you're well!
+
+        I'm reaching out because I'm applying for a Software Engineer role at [Company Name - if known, otherwise "a company"] ([https://www.linkedin.com/jobs/1234567890](https://www.linkedin.com/jobs/1234567890)) that seems like a great fit, especially given my experience with [mention a specific relevant skill/technology you know Jane is familiar with or that is important to the job].
+
+        Given our connection at CompanyFooBar, I was hoping you might be willing to take a quick look at the job description and let me know if you think a referral would be appropriate.
+
+        No worries if you're too busy, but I appreciate your consideration. (Go BazQux!)
+
+        Best regards,
+
+        John Doe
+    """
 
