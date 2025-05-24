@@ -138,6 +138,10 @@ const LinkedInUpload: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <p className="text-center text-sm text-gray-500 mt-8">
+          🔒 Your data is processed locally and is never stored on our servers
+        </p>
       </div>
     </div>
   );
