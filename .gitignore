@@ -60,3 +60,4 @@ Thumbs.db
 
 # Backend
 backend/resources/*
+backend/__pycache__/*

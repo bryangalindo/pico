@@ -24,6 +24,6 @@ class Education:
 class User:
     first_name: str
     last_name: str
-    url: str
+    profile_url: str
     companies: list[Company]
     education: list[Education]
