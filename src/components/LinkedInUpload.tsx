@@ -162,10 +162,12 @@ const LinkedInUpload: React.FC = () => {
                   className={`cursor-pointer inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white 
                     ${uploadStatus === 'uploading' 
                       ? 'bg-blue-400 cursor-not-allowed' 
+                      : uploadStatus === 'uploaded'
+                      ? 'bg-gray-500 hover:bg-gray-600'
                       : 'bg-blue-600 hover:bg-blue-700'} 
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200`}
                 >
-                  {uploadStatus === 'uploading' ? 'Uploading...' : 'Choose ZIP file'}
+                  {uploadStatus === 'uploading' ? 'Uploading...' : uploadStatus === 'uploaded' ? 'Upload a different file' : 'Choose ZIP file'}
                 </label>
               </div>
 
