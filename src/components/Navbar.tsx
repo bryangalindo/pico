@@ -27,9 +27,7 @@ const Navbar: React.FC = () => {
           
           <div className="hidden md:flex items-center gap-8">
             <a 
-              href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/waitlist"
               className="ml-4 px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300"
             >
               Join waitlist
@@ -78,9 +76,7 @@ const Navbar: React.FC = () => {
               Blog
             </a>
             <a 
-              href="https://docs.google.com/forms/d/1Tr0YK5m_4sMcbHf6KOEGINdK2v7CkbUh8zrQSavi2V8/edit"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/waitlist"
               className="w-full mt-4 px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium transition-all duration-300 block text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
