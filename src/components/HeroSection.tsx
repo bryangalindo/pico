@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-10">
         <div className="space-y-6 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tight">
-            every job referral from your network with <span className="text-blue-500">one click</span>
+            Unlock job referrals from your entire <span className="text-blue-500">network</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
           Pico analyzes your LinkedIn connections, finds job openings at their companies, and writes personalized referral messages.
