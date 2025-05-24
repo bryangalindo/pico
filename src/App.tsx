@@ -56,7 +56,6 @@ function App() {
           <Route path="/demo" element={<Demo />} />
           <Route path="/waitlist" element={<Waitlist />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );
