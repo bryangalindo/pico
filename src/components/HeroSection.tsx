@@ -4,7 +4,7 @@ import WaitlistCounter from './WaitlistCounter';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black text-white px-4 md:px-8 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-black text-white px-4 md:px-8 overflow-hidden pt-20 md:pt-24">
       {/* Background grid pattern */}
       <div className="absolute inset-0 grid grid-cols-10 grid-rows-10 opacity-10">
         {Array.from({ length: 100 }).map((_, i) => (
