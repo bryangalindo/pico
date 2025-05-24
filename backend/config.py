@@ -3,6 +3,8 @@ import os
 
 load_dotenv()
 
+ENV = os.getenv('ENV')
+IS_DEBUG = ENV != 'prod'
 
 LINKEDIN_CSRF_TOKEN_ID = os.getenv('LINKEDIN_CSRF_TOKEN_ID')
 LINKEDIN_COOKIE = os.getenv('LINKEDIN_COOKIE')
