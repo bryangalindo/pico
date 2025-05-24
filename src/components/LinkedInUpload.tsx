@@ -147,9 +147,13 @@ const LinkedInUpload: React.FC = () => {
             </div>
           </div>
         </div>
-        <p className="text-center text-sm text-gray-500 mt-8">
-          🔒 Your data is processed locally and is never stored on our servers
-        </p>
+
+        {!selectedFile && (
+          <p className="text-center text-sm text-gray-500 mt-8">
+            🔒 Your data is processed locally and is never stored on our servers
+          </p>
+        )}
+
         {uploadStatus === 'uploaded' && (
           <div className="mt-6 text-center">
             <button
