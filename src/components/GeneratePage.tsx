@@ -60,7 +60,18 @@ const GeneratePage: React.FC = () => {
     ].join(',');
 
     // Create CSV content with headers and one row
-    const csvContent = `${headers}\nhttps://www.linkedin.com/in/brian-garcia-a878092b5/,"Hi Brian,\n\nHope you're well!\n\nI'm reaching out because I'm applying for a Software Engineer role [1] at your company that seems like a great fit, especially given my experience with Python.\n\nGiven our connection at CompanyFooBar [1], I was hoping you might be willing to take a quick look at the job description and let me know if you think a referral would be appropriate.\n\nNo worries if you're too busy, but I appreciate your consideration. (Go BazQux!)\n\nBest regards,\n\nJohn Doe\n\n[1]: https://www.linkedin.com/jobs/1234567890"`;
+    const csvContent = `${headers}\n` +
+      'https://www.linkedin.com/in/brian-garcia-a878092b5/,' +
+      '"Hi Brian,\n\n' +
+      'Hope you\'re well!\n\n' +
+      'I\'m reaching out because I\'m applying for a Software Engineer role [1] at your company that seems like a great fit, ' +
+      'especially given my experience with Python.\n\n' +
+      'Given our connection at CompanyFooBar [1], I was hoping you might be willing to take a quick look at the job description ' +
+      'and let me know if you think a referral would be appropriate.\n\n' +
+      'No worries if you\'re too busy, but I appreciate your consideration. (Go BazQux!)\n\n' +
+      'Best regards,\n\n' +
+      'John Doe\n\n' +
+      '[1]: https://www.linkedin.com/jobs/1234567890"';
 
     // Create a Blob with the CSV content
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
