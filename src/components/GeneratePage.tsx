@@ -55,13 +55,7 @@ const GeneratePage: React.FC = () => {
   const handleDownload = () => {
     // Create CSV header row
     const headers = [
-      'connection_name',
       'connection_profile_url',
-      'company_name',
-      'company_url',
-      'common_ground',
-      'job_role',
-      'job_post_url',
       'referral_request_message'
     ].join(',');
 
