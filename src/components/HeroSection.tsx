@@ -35,7 +35,7 @@ const HeroSection: React.FC = () => {
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a 
-            href="demo" 
+            href="#demo" 
             className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-medium transition-all duration-300 backdrop-blur-sm"
           >
             See demo
