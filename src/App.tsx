@@ -12,6 +12,13 @@ import GeneratePage from './components/GeneratePage';
 import './animations.css';
 
 function Home() {
+  React.useEffect(() => {
+    fetch('/api/ping')
+      .then(response => response.text())
+      .then(data => console.log('Ping response:', data))
+      .catch(error => console.error('Error pinging server:', error));
+  }, []);
+
   return (
     <>
       <HeroSection />
