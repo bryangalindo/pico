@@ -13,8 +13,14 @@ import './animations.css';
 
 function Home() {
   React.useEffect(() => {
-    fetch('/api/ping')
-      .then(response => response.text())
+    const apiUrl = '/api/ping';
+    console.log('Requesting API endpoint:', window.location.origin + apiUrl);
+    
+    fetch(apiUrl)
+      .then(response => {
+        console.log('Resolved URL:', response.url);
+        return response.text();
+      })
       .then(data => console.log('Ping response:', data))
       .catch(error => console.error('Error pinging server:', error));
   }, []);
