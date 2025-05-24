@@ -13,7 +13,7 @@ import './animations.css';
 
 function Home() {
   React.useEffect(() => {
-    const apiUrl = '/api/ping';
+    const apiUrl = import.meta.env.VITE_API_URL || '/api/ping';
     console.log('Requesting API endpoint:', window.location.origin + apiUrl);
     
     fetch(apiUrl)
