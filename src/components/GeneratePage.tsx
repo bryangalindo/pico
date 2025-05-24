@@ -54,8 +54,37 @@ const GeneratePage: React.FC = () => {
   }, []);
 
   const handleDownload = () => {
-    // TODO: Implement actual file download
-    console.log('Downloading file...');
+    // Create CSV header row
+    const headers = [
+      'connection_name',
+      'connection_profile_url',
+      'company_name',
+      'company_url',
+      'common_ground',
+      'job_role',
+      'job_post_url',
+      'referral_request_message'
+    ].join(',');
+
+    // Create CSV content with headers only
+    const csvContent = headers;
+
+    // Create a Blob with the CSV content
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    
+    // Create a download link
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    // Set up the download link
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'pico_ai_referral_requests.csv');
+    link.style.visibility = 'hidden';
+    
+    // Add link to document, click it, and remove it
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
