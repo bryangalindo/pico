@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
             every job referral from your network with <span className="text-blue-500">one click</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
-          PicoAI analyzes your LinkedIn connections, finds job openings at their companies, and writes personalized referral messages — all automatically.
+          Pico analyzes your LinkedIn connections, finds job openings at their companies, and writes personalized referral messages.
           </p>
         </div>
 

@@ -78,7 +78,7 @@ const GeneratePage: React.FC = () => {
     
     // Set up the download link
     link.setAttribute('href', url);
-    link.setAttribute('download', 'pico_ai_referral_requests.csv');
+    link.setAttribute('download', 'pico_referral_requests.csv');
     link.style.visibility = 'hidden';
     
     // Add link to document, click it, and remove it

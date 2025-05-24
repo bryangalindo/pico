@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Zap className="w-6 h-6 text-blue-500" />
-              <span className="font-bold text-xl">PicoAI</span>
+              <span className="font-bold text-xl">Pico</span>
             </div>
             <p className="text-gray-400 max-w-xs mb-6">
               Your job hunt research team. Leveraging AI to give you the edge in your career search.
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         
         <div className="pt-8 mt-8 border-t border-gray-800 text-center sm:text-left">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} PicoAI. All rights reserved.
+            &copy; {currentYear} Pico. All rights reserved.
           </p>
         </div>
       </div>

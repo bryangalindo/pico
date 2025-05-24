@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           <a href="#" className="flex items-center gap-2">
             <Zap className={`w-6 h-6 ${isScrolled ? 'text-blue-500' : 'text-blue-400'}`} />
-            <span className="font-bold text-xl text-white">PicoAI</span>
+            <span className="font-bold text-xl text-white">Pico</span>
           </a>
           
           <div className="hidden md:flex items-center gap-8">
