@@ -62,7 +62,7 @@ const GeneratePage: React.FC = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="w-full max-w-2xl px-4">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Generating Your Referral Requests</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Generating Your Referral Requests File</h2>
           <p className="text-gray-600">We're analyzing your LinkedIn data to find the best opportunities.</p>
         </div>
 
@@ -75,7 +75,7 @@ const GeneratePage: React.FC = () => {
                 onClick={handleDownload}
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
               >
-                Download Referral Requests
+                Download Referral Requests File
               </button>
             </div>
           )}
