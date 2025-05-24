@@ -4,6 +4,7 @@ const LinkedInUpload: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'uploaded'>('idle');
+  const [generationStatus, setGenerationStatus] = useState<'idle' | 'generating' | 'generated'>('idle');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -43,6 +44,14 @@ const LinkedInUpload: React.FC = () => {
     } else {
       alert('Please upload a ZIP file');
     }
+  };
+
+  const handleGenerateReferrals = () => {
+    setGenerationStatus('generating');
+    // TODO: Implement actual referral generation logic here
+    setTimeout(() => {
+      setGenerationStatus('generated');
+    }, 2000);
   };
 
   const getStatusColor = () => {
@@ -138,10 +147,46 @@ const LinkedInUpload: React.FC = () => {
             </div>
           </div>
         </div>
-
         <p className="text-center text-sm text-gray-500 mt-8">
           🔒 Your data is processed locally and is never stored on our servers
         </p>
+        {uploadStatus === 'uploaded' && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={handleGenerateReferrals}
+              disabled={generationStatus === 'generating'}
+              className={`inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white 
+                ${generationStatus === 'generating' 
+                  ? 'bg-blue-400 cursor-not-allowed' 
+                  : 'bg-green-600 hover:bg-green-700'} 
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200`}
+            >
+              {generationStatus === 'generating' ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Generating Referral Requests...
+                </>
+              ) : generationStatus === 'generated' ? (
+                <>
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Download Referral Requests
+                </>
+              ) : (
+                'Generate Referral Requests File'
+              )}
+            </button>
+            {generationStatus === 'generated' && (
+              <p className="mt-2 text-sm text-green-600">
+                Your referral requests are ready! Click to download the CSV file.
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
