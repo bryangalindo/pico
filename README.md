@@ -1,4 +1,4 @@
-# 🍅 PicoAI: Your Job Referral Outreach, Automated.
+# 🍅 PicoAI: Unlock job referrals from your entire network.
 
 I have 26 hours to build PicoAI as part of the #AgentHacks2025 Hackathon.
 
