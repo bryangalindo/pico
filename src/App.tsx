@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import OldWaySection from './components/OldWaySection';
@@ -46,19 +46,28 @@ function Waitlist() {
   return null;
 }
 
+function AppContent() {
+  const location = useLocation();
+  const showNavbar = location.pathname !== '/upload';
+
+  return (
+    <div className="font-sans">
+      {showNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/repo" element={<Repo />} />
+        <Route path="/demo" element={<Demo />} />
+        <Route path="/waitlist" element={<Waitlist />} />
+        <Route path="/upload" element={<LinkedInUpload />} />
+      </Routes>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="font-sans">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/repo" element={<Repo />} />
-          <Route path="/demo" element={<Demo />} />
-          <Route path="/waitlist" element={<Waitlist />} />
-          <Route path="/upload" element={<LinkedInUpload />} />
-        </Routes>
-      </div>
+      <AppContent />
     </Router>
   );
 }
