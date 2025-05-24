@@ -8,6 +8,7 @@ import TestimonialsSection from './components/TestimonialsSection';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import LinkedInUpload from './components/LinkedInUpload';
+import GeneratePage from './components/GeneratePage';
 import './animations.css';
 
 function Home() {
@@ -48,7 +49,7 @@ function Waitlist() {
 
 function AppContent() {
   const location = useLocation();
-  const showNavbar = location.pathname !== '/upload';
+  const showNavbar = !['/upload', '/generate'].includes(location.pathname);
 
   return (
     <div className="font-sans">
@@ -59,6 +60,7 @@ function AppContent() {
         <Route path="/demo" element={<Demo />} />
         <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/upload" element={<LinkedInUpload />} />
+        <Route path="/generate" element={<GeneratePage />} />
       </Routes>
     </div>
   );

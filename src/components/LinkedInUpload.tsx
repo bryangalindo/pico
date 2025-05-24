@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-type GenerationStep = {
+export type GenerationStep = {
   id: string;
   label: string;
   status: 'pending' | 'in-progress' | 'completed' | 'error';
 };
 
-const GENERATION_STEPS: GenerationStep[] = [
-  { id: 'education', label: 'Getting your education...', status: 'pending' },
-  { id: 'companies', label: 'Getting your companies...', status: 'pending' },
-  { id: 'roles', label: 'Getting your desired roles...', status: 'pending' },
-  { id: 'connections', label: 'Finding connections with common ground...', status: 'pending' },
-  { id: 'jobs', label: 'Finding active jobs from your connections...', status: 'pending' },
-  { id: 'messages', label: 'Generating personalized messages...', status: 'pending' },
-  { id: 'csv', label: 'Generating CSV...', status: 'pending' },
-];
-
-const GenerationProgress: React.FC<{ steps: GenerationStep[] }> = ({ steps }) => {
+export const GenerationProgress: React.FC<{ steps: GenerationStep[] }> = ({ steps }) => {
   return (
     <div className="mt-6 space-y-4">
       {steps.map((step, index) => (
@@ -51,12 +42,10 @@ const GenerationProgress: React.FC<{ steps: GenerationStep[] }> = ({ steps }) =>
 };
 
 const LinkedInUpload: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'uploaded'>('idle');
-  const [generationStatus, setGenerationStatus] = useState<'idle' | 'generating' | 'generated'>('idle');
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const [steps, setSteps] = useState<GenerationStep[]>(GENERATION_STEPS);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -98,26 +87,10 @@ const LinkedInUpload: React.FC = () => {
     }
   };
 
-  const handleGenerateReferrals = async () => {
-    setGenerationStatus('generating');
-    setSteps(steps.map(step => ({ ...step, status: 'pending' })));
-    
-    // Simulate processing each step
-    for (let i = 0; i < steps.length; i++) {
-      setCurrentStep(i);
-      setSteps(prevSteps => 
-        prevSteps.map((step, index) => ({
-          ...step,
-          status: index === i ? 'in-progress' : 
-                 index < i ? 'completed' : 'pending'
-        }))
-      );
-      
-      // Simulate processing time for each step
-      await new Promise(resolve => setTimeout(resolve, 1000));
+  const handleGenerateReferrals = () => {
+    if (selectedFile) {
+      navigate('/generate', { state: { file: selectedFile } });
     }
-    
-    setGenerationStatus('generated');
   };
 
   const getStatusColor = () => {
@@ -147,7 +120,7 @@ const LinkedInUpload: React.FC = () => {
       <div className="w-full max-w-2xl px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Upload Your LinkedIn Export Data</h2>
-          <p mn-0 className="text-gray-600">Your education, companies, job role alerts, and connections are extracted from this dataset.</p>
+          <p className="text-gray-600">Your education, companies, job role alerts, and connections are extracted from this dataset.</p>
         </div>
         
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -224,27 +197,10 @@ const LinkedInUpload: React.FC = () => {
           <div className="mt-6 text-center">
             <button
               onClick={handleGenerateReferrals}
-              disabled={generationStatus === 'generating'}
-              className={`inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white 
-                ${generationStatus === 'generating' 
-                  ? 'bg-blue-400 cursor-not-allowed' 
-                  : 'bg-green-600 hover:bg-green-700'} 
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200`}
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
             >
-              {generationStatus === 'generating' ? 'Generating...' : 
-               generationStatus === 'generated' ? 'Download Referral Requests' :
-               'Generate Referral Requests File'}
+              Generate Referral Requests File
             </button>
-            
-            {generationStatus === 'generating' && (
-              <GenerationProgress steps={steps} />
-            )}
-            
-            {generationStatus === 'generated' && (
-              <p className="mt-2 text-sm text-green-600">
-                Your referral requests are ready! Click to download the CSV file.
-              </p>
-            )}
           </div>
         )}
       </div>
